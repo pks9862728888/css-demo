@@ -3,7 +3,7 @@ const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
 
 // Define the input and output directories
-const inputScssDir = '../src/styles/*.scss';
+const inputScssDir = '../src/scss/*.scss';
 const outputCssDir = '../dist/css';
 const inputHtmlDir = '../src/html/*.html';
 const outputHtmlDir = '../dist/';
