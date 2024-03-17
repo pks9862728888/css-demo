@@ -1,8 +1,23 @@
-@import "variables";
+@import "partials/variables";
+@import "partials/mixins";
+@include fancy-links;
+@include google-font("Alegreya+Sans");
+@include google-font("Titilium+Web");
+
+@include apply-to-ie-6 {
+  body {
+    font-size: 125%;
+  }
+}
 
 body {
   font-family: $text-font;
   color: $text-color;
+  background-color: hsl(60, 50%, 100%);
+
+  @include large-screens {
+    font-size: 125%;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -15,9 +30,19 @@ p {
 
 a {
   color: $link-color;
+  &:hover {
+    color: darken($link-color, 15%)
+  }
+}
+
+.warning-button {
+  @include warning;
+  padding: 8px 12px;
 }
 
 #header {
+  @include box($border: 2px solid red);
+  @include box-shadow(2px 0px 4px #999, 1px 1px 6px $secondary-color);
   height: $header-height;
   background-color: $theme-color;
 
@@ -27,6 +52,13 @@ a {
     }
     a {
       color: $main-menu-color;
+      padding: 6px 8px;
+      border-bottom: 1px solid transparentize($color: #fefefe, $amount: 1);
+      transition: border-bottom 0.5s;
+      transition-timing-function: ease-in-out;
+      &:hover {
+        border-bottom: 1px solid opacify($color: #fefefe, $amount: 0.5);
+      }
     }
   }
   
@@ -39,6 +71,10 @@ a {
   width: $content-width;
   margin-left: auto;
   margin-right: auto;
+  @include large-screens {
+    width: auto;
+    max-width: $content-width;
+  }
 
   #content {
   }
